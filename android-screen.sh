@@ -14,6 +14,7 @@ xrandr --auto --output HDMI-1 --off) &
 
 if [ -n "$1" ]
 then
+else
     sleep 1 &&
     adb reverse tcp:8888 tcp:8888 &&
     adb shell am start -d "tcp://${ipaddr}" -a android.intent.action.VIEW
