@@ -18,3 +18,11 @@ then
     adb reverse tcp:8888 tcp:8888 &&
     adb shell am start -d "tcp://${ipaddr}" -a android.intent.action.VIEW
 fi
+
+#MPV config for low latency : 
+#no-cache
+#untimed
+#no-demuxer-thread
+#video-sync=audio
+#vd-lavc-threads=1
+
