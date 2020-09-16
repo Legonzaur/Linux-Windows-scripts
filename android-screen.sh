@@ -29,7 +29,7 @@ xrandr --newmode $(gtf ${VIRTYRES} ${VIRTXRES} 60 | sed -ne 's/"//g;s/ Modeline 
 xrandr --addmode HDMI-1 "$Xmode"
 
 $(xrandr --output HDMI-1 --mode $Xmode --pos ${OFFSETY}x${OFFSETX} &&
-ffmpeg -probesize 32 -analyzeduration 0 -nostdin -hwaccel cuda -hwaccel_output_format cuda -framerate 60 -f x11grab -video_size ${VIRTYRES}x${VIRTXRES} -i :0.0+${OFFSETY},${OFFSETX} -framerate 60 -flags low_delay -fflags nobuffer+fastseek+flush_packets -strict experimental -tune:v fastdecode+zerolatency -analyzeduration 0 -threads auto -preset:v ultrafast -crf 0 -vcodec libx264rgb -f mpegts "tcp://${IPADDR}?listen" || #2> /dev/null ||
+ffmpeg -probesize 32 -analyzeduration 0 -nostdin -hwaccel cuda -hwaccel_output_format cuda -framerate 60 -f x11grab -video_size ${VIRTYRES}x${VIRTXRES} -i :0.0+${OFFSETY},${OFFSETX} -framerate 60 -flags low_delay -fflags nobuffer+fastseek+flush_packets -strict experimental -tune:v fastdecode+zerolatency -analyzeduration 0 -threads auto -preset:v ultrafast -crf 0 -vcodec libx264rgb -f mpegts "tcp://${IPADDR}?listen" || 2> /dev/null ||
 xrandr --auto --output HDMI-1 --off) &
 
 #if [ -a "$1" ]
