@@ -26,9 +26,9 @@ mysql_secure_installation
 #cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
 
 #Database creation
-mysql -u root -p -e "CREATE DATABASE glpi"
-mysql -u root -p -e "GRANT ALL ON glpi.* TO 'glpi'@'localhost' IDENTIFIED BY ${glpiPassword}"
-mysql -u root -p -e "FLUSH PRIVILEGES"
+mysql -u root -e "CREATE DATABASE glpi"
+mysql -u root -e "GRANT ALL ON glpi.* TO 'glpi'@'localhost' IDENTIFIED BY '${glpiPassword}'"
+mysql -u root -e "FLUSH PRIVILEGES"
 
 #copy php config file
 systemctl restart php-fpm
