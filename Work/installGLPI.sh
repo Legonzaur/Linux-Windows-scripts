@@ -43,8 +43,8 @@ dnf install php-{curl,fileinfo,gd,json,mbstring,mysqli,session,zlib,simplexml,xm
 dnf install php-{cli,domxml,ldap,openssl,xmlrpc,pecl-apcu} -y
 #edit php conf file, perhaps
 wget https://github.com/glpi-project/glpi/releases/download/9.5.3/glpi-9.5.3.tgz
-tar -C /var/www/html/ -xvf glpi-9.5.3.tgz --strip-components=1 glpi/
-cd /var/www/html
+tar -C /var/www/html/glpi -xvf glpi-9.5.3.tgz --strip-components=1 glpi/
+cd /var/www/html/glpi
 chown -R apache:apache /var/www/html
 setsebool -P httpd_can_network_connect on
 setsebool -P httpd_can_network_connect_db on
