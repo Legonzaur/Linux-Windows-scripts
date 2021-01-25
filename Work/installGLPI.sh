@@ -53,7 +53,7 @@ setsebool -P httpd_can_sendmail on
 php bin/console glpi:system:check_requirements
 read -p "Press any key to continue installation..."
 
-echo "Database name:${RED}glpi${NC}"
-echo "Database user:${RED}glpi${NC}"
-echo "Database password:${RED}${glpiPassword}${NC}"
+echo -e "Database name:${RED}glpi${NC}"
+echo -e "Database user:${RED}glpi${NC}"
+echo -e "Database password:${RED}${glpiPassword}${NC}"
 php bin/console db:install -p
