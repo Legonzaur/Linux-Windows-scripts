@@ -6,10 +6,10 @@ fi
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-echo "Enter password for glpi database user"
-read glpiPassword
-echo "Enter MySQL root password"
-read mysqlPasword
+
+read -p "Enter password for glpi database user" glpiPassword
+
+read -p "Enter MySQL root password (leave empty for none)" mysqlPasword
 #LAMP Installation
 dnf install httpd php mariadb-server mariadb php-{gd,pdo,xml,mbstring,zip,mysqlnd,opcache,json} -y
 
