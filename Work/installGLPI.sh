@@ -8,6 +8,8 @@ NC='\033[0m' # No Color
 
 echo "Enter password for glpi database user"
 read glpiPassword
+echo "Enter MySQL root password"
+read mysqlPasword
 #LAMP Installation
 dnf install httpd php mariadb-server mariadb php-{gd,pdo,xml,mbstring,zip,mysqlnd,opcache,json} -y
 
@@ -21,17 +23,24 @@ firewall-cmd --reload
 systemctl enable --now httpd.service
 systemctl enable --now mariadb.service
 
-mysql_secure_installation
+while true; do
+    read -p "Do you wish to run mysql_secure_installation? [y(Recommended)/n]" yn
+    case $yn in
+        [Yy]* ) mysql_secure_installation; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 
 #cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
 
 #Database creation
 echo "1/3 : Enter MYSQL root password"
-mysql -u root -e "CREATE DATABASE glpi"
+mysql -u root -p "${mysqlPassword}" -e "CREATE DATABASE glpi"
 echo "2/3 : Enter MYSQL root password"
-mysql -u root -e "GRANT ALL ON glpi.* TO 'glpi'@'localhost' IDENTIFIED BY '${glpiPassword}'"
+mysql -u root -p "${mysqlPassword}" -e "GRANT ALL ON glpi.* TO 'glpi'@'localhost' IDENTIFIED BY '${glpiPassword}'"
 echo "3/3 : Enter MYSQL root password"
-mysql -u root -e "FLUSH PRIVILEGES"
+mysql -u root -p "${mysqlPassword}" -e "FLUSH PRIVILEGES"
 
 #copy php config file
 systemctl restart php-fpm
