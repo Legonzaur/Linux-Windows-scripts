@@ -27,7 +27,7 @@ mysql_secure_installation
 
 #Database creation
 echo "1/3 : Enter MYSQL root password"
-mysql -u -p root -e "CREATE DATABASE glpi"
+mysql -u root -e "CREATE DATABASE glpi"
 echo "2/3 : Enter MYSQL root password"
 mysql -u root -e "GRANT ALL ON glpi.* TO 'glpi'@'localhost' IDENTIFIED BY '${glpiPassword}'"
 echo "3/3 : Enter MYSQL root password"
