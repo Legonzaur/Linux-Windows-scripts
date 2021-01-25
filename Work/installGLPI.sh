@@ -44,6 +44,10 @@ dnf install php-{cli,domxml,ldap,openssl,xmlrpc,pecl-apcu} -y
 #edit php conf file, perhaps
 wget https://github.com/glpi-project/glpi/releases/download/9.5.3/glpi-9.5.3.tgz
 tar -C /var/www/html/glpi -xvf glpi-9.5.3.tgz --strip-components=1 glpi/
+
+wget https://github.com/pluginsGLPI/genericobject/releases/download/2.9.2/glpi-genericobject-2.9.2.tar.bz2
+tar -C /var/www/html/glpi/plugins -xvf glpi-genericobject-2.9.2.tar.bz2
+
 cd /var/www/html/glpi
 chown -R apache:apache /var/www/html
 setsebool -P httpd_can_network_connect on
