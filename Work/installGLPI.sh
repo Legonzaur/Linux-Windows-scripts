@@ -7,9 +7,10 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 
-read -p "Enter password for glpi database user" glpiPassword
+read -s -p "Enter password for glpi database user : " glpiPassword
+echo ""
 
-read -p "Enter MySQL root password (leave empty for none)" mysqlPasword
+#read -p "Enter MySQL root password (leave empty for none)" mysqlPasword
 #LAMP Installation
 dnf install httpd php mariadb-server mariadb php-{gd,pdo,xml,mbstring,zip,mysqlnd,opcache,json} -y
 
@@ -27,7 +28,7 @@ while true; do
     read -p "Do you wish to run mysql_secure_installation? [y(Recommended)/n]" yn
     case $yn in
         [Yy]* ) mysql_secure_installation; break;;
-        [Nn]* ) exit;;
+        [Nn]* ) echo ""; break;;
         * ) echo "Please answer yes or no.";;
     esac
 done
@@ -35,12 +36,12 @@ done
 #cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
 
 #Database creation
-echo "1/3 : Enter MYSQL root password"
-mysql -u root -p "${mysqlPassword}" -e "CREATE DATABASE glpi"
-echo "2/3 : Enter MYSQL root password"
-mysql -u root -p "${mysqlPassword}" -e "GRANT ALL ON glpi.* TO 'glpi'@'localhost' IDENTIFIED BY '${glpiPassword}'"
-echo "3/3 : Enter MYSQL root password"
-mysql -u root -p "${mysqlPassword}" -e "FLUSH PRIVILEGES"
+echo "Enter MYSQL root password"
+mysql -u root -p -e "CREATE DATABASE glpi; GRANT ALL ON glpi.* TO 'glpi'@'localhost' IDENTIFIED BY '${glpiPassword}';FLUSH PRIVILEGES;"
+#echo "2/3 : Enter MYSQL root password"
+#mysql -u root -p -e "GRANT ALL ON glpi.* TO 'glpi'@'localhost' IDENTIFIED BY '${glpiPassword}'"
+#echo "3/3 : Enter MYSQL root password"
+#mysql -u root -p -e "FLUSH PRIVILEGES"
 
 #copy php config file
 systemctl restart php-fpm
@@ -67,7 +68,7 @@ setsebool -P httpd_can_network_connect_db on
 setsebool -P httpd_can_sendmail on
 
 php bin/console glpi:system:check_requirements
-read -p "Press any key to continue installation..."
+read -p "Press enter to continue installation..."
 
 echo -e "Database name:${RED}glpi${NC}"
 echo -e "Database user:${RED}glpi${NC}"
