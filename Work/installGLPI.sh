@@ -62,7 +62,6 @@ mkdir /var/www/html/glpi/plugins
 tar -C /var/www/html/glpi/plugins -xvf glpi-genericobject-2.9.2.tar.bz2
 
 cd /var/www/html/glpi
-chown -R apache:apache /var/www/html
 setsebool -P httpd_can_network_connect on
 setsebool -P httpd_can_network_connect_db on
 setsebool -P httpd_can_sendmail on
@@ -74,3 +73,4 @@ echo -e "Database name:${RED}glpi${NC}"
 echo -e "Database user:${RED}glpi${NC}"
 echo -e "Database password:${RED}${glpiPassword}${NC}"
 php bin/console db:install -p
+chown -R apache:apache /var/www/html
