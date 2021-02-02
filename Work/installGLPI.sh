@@ -52,7 +52,7 @@ tar -C /var/www/html/glpi/plugins -xvf glpi-genericobject-2.9.2.tar.bz2
 rm glpi-genericobject-2.9.2.tar.bz2
 
 wget https://github.com/pluginsGLPI/datainjection/releases/download/2.9.0/glpi-datainjection-2.9.0.tar.bz2
-tar -C /var/www/html/glpi/plugins -xvf glpi-genericobject-2.9.2.tar.bz2
+tar -C /var/www/html/glpi/plugins -xvf glpi-datainjection-2.9.0.tar.bz2
 rm glpi-datainjection-2.9.0.tar.bz2
 
 cd /var/www/html/glpi
