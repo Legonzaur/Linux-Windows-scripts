@@ -65,3 +65,4 @@ echo -e "Database user:${RED}glpi${NC}"
 echo -e "Database password:${RED}${glpiPassword}${NC}"
 php bin/console db:install -p
 chown -R apache:apache /var/www/html
+rm install/install.php
