@@ -43,17 +43,14 @@ systemctl restart php-fpm
 #GLPI installation
 mkdir /var/www/html/glpi
 wget https://github.com/glpi-project/glpi/releases/download/9.5.3/glpi-9.5.3.tgz
-tar -C /var/www/html/glpi -xvf glpi-9.5.3.tgz --strip-components=1 glpi/
-rm glpi-9.5.3.tgz
+tar -C /var/www/html/glpi -xvf glpi-9.5.3.tgz --strip-components=1 glpi/ && rm glpi-9.5.3.tgz
 
 mkdir /var/www/html/glpi/plugins
 wget https://github.com/pluginsGLPI/genericobject/releases/download/2.9.2/glpi-genericobject-2.9.2.tar.bz2
-tar -C /var/www/html/glpi/plugins -xvf glpi-genericobject-2.9.2.tar.bz2
-rm glpi-genericobject-2.9.2.tar.bz2
+tar -C /var/www/html/glpi/plugins -xvf glpi-genericobject-2.9.2.tar.bz2 && rm glpi-genericobject-2.9.2.tar.bz2
 
 wget https://github.com/pluginsGLPI/datainjection/releases/download/2.9.0/glpi-datainjection-2.9.0.tar.bz2
-tar -C /var/www/html/glpi/plugins -xvf glpi-datainjection-2.9.0.tar.bz2
-rm glpi-datainjection-2.9.0.tar.bz2
+tar -C /var/www/html/glpi/plugins -xvf glpi-datainjection-2.9.0.tar.bz2 && rm glpi-datainjection-2.9.0.tar.bz2
 
 cd /var/www/html/glpi
 setsebool -P httpd_can_network_connect on
