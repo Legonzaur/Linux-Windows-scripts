@@ -11,7 +11,7 @@ read -s -p "Enter password for glpi database user : " glpiPassword
 echo ""
 
 #LAMP Installation
-dnf install httpd php mariadb-server mariadb php-{gd,pdo,xml,mbstring,zip,mysqlnd,opcache,json,curl,fileinfo,gd,json,mbstring,mysqli,session,zlib,simplexml,xml,intl,cli,domxml,ldap,openssl,xmlrpc,pecl-apcu} -y
+dnf install bzip2 httpd php mariadb-server mariadb php-{gd,pdo,xml,mbstring,zip,mysqlnd,opcache,json,curl,fileinfo,gd,json,mbstring,mysqli,session,zlib,simplexml,xml,intl,cli,domxml,ldap,openssl,xmlrpc,pecl-apcu} -y
 #security stuff
 setsebool -P httpd_unified on
 #setsebool -P httpd_execmem 1
