@@ -10,10 +10,8 @@ NC='\033[0m' # No Color
 read -s -p "Enter password for glpi database user : " glpiPassword
 echo ""
 
-#read -p "Enter MySQL root password (leave empty for none)" mysqlPasword
 #LAMP Installation
-dnf install httpd php mariadb-server mariadb php-{gd,pdo,xml,mbstring,zip,mysqlnd,opcache,json} -y
-
+dnf install httpd php mariadb-server mariadb php-{gd,pdo,xml,mbstring,zip,mysqlnd,opcache,json,curl,fileinfo,gd,json,mbstring,mysqli,session,zlib,simplexml,xml,intl,cli,domxml,ldap,openssl,xmlrpc,pecl-apcu} -y
 #security stuff
 setsebool -P httpd_unified on
 #setsebool -P httpd_execmem 1
@@ -38,28 +36,24 @@ done
 #Database creation
 echo "Enter MYSQL root password"
 mysql -u root -p -e "CREATE DATABASE glpi; GRANT ALL ON glpi.* TO 'glpi'@'localhost' IDENTIFIED BY '${glpiPassword}';FLUSH PRIVILEGES;"
-#echo "2/3 : Enter MYSQL root password"
-#mysql -u root -p -e "GRANT ALL ON glpi.* TO 'glpi'@'localhost' IDENTIFIED BY '${glpiPassword}'"
-#echo "3/3 : Enter MYSQL root password"
-#mysql -u root -p -e "FLUSH PRIVILEGES"
 
 #copy php config file
 systemctl restart php-fpm
 
-
-
 #GLPI installation
-dnf install php-{curl,fileinfo,gd,json,mbstring,mysqli,session,zlib,simplexml,xml,intl} -y
-dnf install php-{cli,domxml,ldap,openssl,xmlrpc,pecl-apcu} -y
-#edit php conf file, perhaps
-
-wget https://github.com/glpi-project/glpi/releases/download/9.5.3/glpi-9.5.3.tgz
 mkdir /var/www/html/glpi
+wget https://github.com/glpi-project/glpi/releases/download/9.5.3/glpi-9.5.3.tgz
 tar -C /var/www/html/glpi -xvf glpi-9.5.3.tgz --strip-components=1 glpi/
+rm glpi-9.5.3.tgz
 
-wget https://github.com/pluginsGLPI/genericobject/releases/download/2.9.2/glpi-genericobject-2.9.2.tar.bz2
 mkdir /var/www/html/glpi/plugins
+wget https://github.com/pluginsGLPI/genericobject/releases/download/2.9.2/glpi-genericobject-2.9.2.tar.bz2
 tar -C /var/www/html/glpi/plugins -xvf glpi-genericobject-2.9.2.tar.bz2
+rm glpi-genericobject-2.9.2.tar.bz2
+
+wget https://github.com/pluginsGLPI/datainjection/releases/download/2.9.0/glpi-datainjection-2.9.0.tar.bz2
+tar -C /var/www/html/glpi/plugins -xvf glpi-genericobject-2.9.2.tar.bz2
+rm glpi-datainjection-2.9.0.tar.bz2
 
 cd /var/www/html/glpi
 setsebool -P httpd_can_network_connect on
