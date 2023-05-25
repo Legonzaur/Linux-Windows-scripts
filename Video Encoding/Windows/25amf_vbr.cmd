@@ -14,7 +14,7 @@ for /f %%i in ('powershell "[math]::Floor(((%target_video_size_MB%*8786432)-%tar
 
 SET file=%~1
 SET bv=%target_video_bitrate_kbit_s%
-SET output=%~1-25mb-nvenc-720p.mp4
+SET output=%~1-25mb-amf-720p.mp4
 SET args=
 
 ffmpeg -hwaccel auto -i "%file%" -preanalysis true -profile:v high -quality quality -rc vbr_peak %args% -c:v h264_amf -b:v %bv% -c:a copy -map 0:v:0 -map 0:a:0 "%output%"
