@@ -1,1 +1,1 @@
-# UNIX-scripts
+# Linux/Windows-scripts
