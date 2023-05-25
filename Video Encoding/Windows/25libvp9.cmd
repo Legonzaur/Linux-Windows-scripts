@@ -21,4 +21,3 @@ SET args=-strict -2 -c:v libvpx-vp9 -cpu-used 4 -auto-alt-ref 1 -aq-mode 0 -tune
 
 ffmpeg -y -hwaccel auto -i "%file%" %args% -passlogfile "%output%" -b:v %bv% -pass 1 -an -f null NIL && ffmpeg -hwaccel auto -i "%file%" %args% -passlogfile "%output%" -b:v %bv% -pass 2 -c:a copy -map 0:v:0 -map 0:a:0 "%output%.mp4"
 del "%output%-0.log"
-del "%output%-0.log.mbtree"
