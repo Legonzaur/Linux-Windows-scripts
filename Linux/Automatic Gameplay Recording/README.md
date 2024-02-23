@@ -1,6 +1,8 @@
 Automatic Nvidia Shadowplay-like for Linux
 
 **Current features** : Records the entire display while a game is launched
+
+It should be possible to tweaks these scripts a bit to allow for a replay feature to be created.
 ## Installation
 ### Requirements
 * Archlinux
