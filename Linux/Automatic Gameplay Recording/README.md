@@ -39,10 +39,10 @@ All recording is done using gpu-screen-recorder, a program that should allow rec
 
 
 
-Please refer to the following repositories for more information about the resources used.
+Please refer to the following repositories for more information.
 
 [Gamemode](https://github.com/FeralInteractive/gamemode)
 
-[Systemd user units](https://wiki.archlinux.org/title/Systemd/User)
-
 [gpu-screen-recorder](https://git.dec05eba.com/gpu-screen-recorder/about/)
+
+[Systemd user units](https://wiki.archlinux.org/title/Systemd/User)
