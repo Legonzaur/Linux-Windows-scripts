@@ -1,5 +1,5 @@
 #!/bin/bash
-target_video_size_MB=23
+target_video_size_MB=50
 file=$1
 origin_duration_s=$(ffprobe -v error -show_streams -select_streams a "$file" | grep -Po "(?<=^duration\=)\d*\.\d*")
 origin_audio_bitrate_kbit_s=$(ffprobe -v error -pretty -show_streams -select_streams a "$file" | grep -Po "(?<=^bit_rate\=)\d*\.\d*")
@@ -19,10 +19,9 @@ target_video_bitrate_kbit_s=$(\
 	-tune:v hq \
 	-2pass true \
 	-multipass fullres \
-	-vf scale_cuda=-2:720 \
     -c:v h264_nvenc \
     -b:v "$target_video_bitrate_kbit_s"k \
     -c:a aac \
     -b:a "$target_audio_bitrate_kbit_s"k \
-    "${file%.*}-${target_video_size_MB}mB-nvenc720.mp4"
+    "${file%.*}-${target_video_size_MB}mB-nvenc.mp4"
 	
