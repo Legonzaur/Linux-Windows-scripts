@@ -19,6 +19,7 @@ target_video_bitrate_kbit_s=$(\
 	-tune:v hq \
 	-2pass true \
 	-multipass fullres \
+    -rc vbr \
 	-vf scale_cuda=-2:720 \
     -c:v h264_nvenc \
     -b:v "$target_video_bitrate_kbit_s"k \
