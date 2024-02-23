@@ -5,7 +5,7 @@ Automatic Nvidia Shadowplay-like for Linux
 Currently, it records everything to a file, but it should be very easy to tweaks these scripts a bit to allow for a replay feature akin to Shadowplay to be created.
 ## Installation
 ### Requirements
-* Archlinux
+Install [Feral Gamemode](https://github.com/FeralInteractive/gamemode) and [gpu-screen-recorder](https://git.dec05eba.com/gpu-screen-recorder/about/)
   
   ```sh
   yay -S gamemode lib32-gamemode gpu-screen-recorder-git 
