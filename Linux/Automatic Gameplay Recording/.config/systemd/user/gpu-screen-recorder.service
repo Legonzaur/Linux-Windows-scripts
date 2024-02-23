@@ -1,0 +1,8 @@
+[Unit]
+Description=Records the display
+
+[Service]
+ExecStart=%h/.local/bin/startRecord
+
+[Install]
+WantedBy=default.target
