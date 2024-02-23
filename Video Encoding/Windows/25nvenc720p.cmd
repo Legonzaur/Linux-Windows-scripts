@@ -17,4 +17,4 @@ SET bv=%target_video_bitrate_kbit_s%
 SET output=%~1-25mb-nvenc-720p.mp4
 SET args=-vf scale=-2:720
 
-ffmpeg -hwaccel auto -i "%file%" -preset:v hq -tune hq -profile:v high -rc vbr_hq -2pass true -rc-lookahead 32 %args% -c:v h264_nvenc -b:v %bv% -c:a copy -map 0:v:0 -map 0:a:0 "%output%"
+ffmpeg -hwaccel cuda -hwaccel_output_format cuda -i "%file%" -preset:v hq -tune hq -profile:v high -rc vbr -2pass true -multipass fullres %args% -c:v h264_nvenc -b:v %bv% -c:a copy -map 0:v:0 -map 0:a:0 "%output%"
