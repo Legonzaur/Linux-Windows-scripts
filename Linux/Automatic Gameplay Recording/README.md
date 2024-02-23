@@ -16,7 +16,7 @@ Copy the corresponding files inside your $HOME directory
 
 You should edit the command line located in `.local/bin/startRecord` to match your wanted settings.
 
-You can use `gpu-screen-recorder --help` to get more information about the usage of this command
+You can use `gpu-screen-recorder --help` to get more information about the usage of the `gpu-screen-recorder` command.
 
 ## Usage
 
