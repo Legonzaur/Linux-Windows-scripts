@@ -6,7 +6,8 @@ Currently, it records everything to a file, but it should be very easy to tweaks
 ## Installation
 ### Requirements
 Install [Feral Gamemode](https://github.com/FeralInteractive/gamemode) and [gpu-screen-recorder](https://git.dec05eba.com/gpu-screen-recorder/about/)
-  
+
+* Archlinux
   ```sh
   yay -S gamemode lib32-gamemode gpu-screen-recorder-git 
   ```
