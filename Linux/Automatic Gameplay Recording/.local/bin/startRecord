@@ -1,3 +1,3 @@
 #!/bin/sh
 killall -SIGINT gpu-screen-recorder
-gpu-screen-recorder -w $(xrandr | grep primary | sed 's/ .*//') -c matroska -q ultra -k hevc -ac opus -f 144 -mf yes -r 120 -cr full -o $HOME/Replays -fm cfr -a "$(pactl get-default-sink).monitor" -a "$(pactl get-default-source)"
+gpu-screen-recorder -w $(xrandr | grep primary | sed 's/ .*//') -c matroska -q ultra -k hevc -v no -ac opus -f 144 -mf yes -r 120 -cr full -o $HOME/Replays -fm cfr -a "$(pactl get-default-sink).monitor" -a "$(pactl get-default-source)"
