@@ -2,7 +2,6 @@ Automatic Nvidia Shadowplay-like for Linux
 
 **Current features** : Records the entire display while a game is launched
 
-Currently, it records everything to a file, but it should be very easy to tweaks these scripts a bit to allow for a replay feature akin to Shadowplay to be created.
 ## Installation
 ### Requirements
 Install [Feral Gamemode](https://github.com/FeralInteractive/gamemode) and [gpu-screen-recorder](https://git.dec05eba.com/gpu-screen-recorder/about/)
@@ -26,6 +25,7 @@ Example :
 ```sh
 gamemoderun glxgears
 ```
+To save the last 2 minutes, you can use the `saveRecord` file, or bind a keyboard shortcut to it using your Desktop Environment.
 
 ### Steam
 
