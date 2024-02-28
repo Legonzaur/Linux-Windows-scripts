@@ -1,6 +1,6 @@
 Automatic Nvidia Shadowplay-like for Linux
 
-**Current features** : Records the entire display while a game is launched
+**Current features** : Records the entire display while a game is launched, save the 2 last minutes when using the shortcut.
 
 ## Installation
 ### Requirements
