@@ -1,3 +1,3 @@
 #!/bin/sh
 killall -SIGINT gpu-screen-recorder
-gpu-screen-recorder -oc yes -w $(xrandr | grep primary | sed 's/ .*//') -c matroska -q ultra -k hevc -ac opus -f 144 -cr full -o $HOME/Replays/$(date +"Video_%Y-%m-%d_%H-%M-%S.mkv") -fm cfr -a "$(pactl get-default-sink).monitor" -a "$(pactl get-default-source)"
+gpu-screen-recorder -w $(xrandr | grep primary | sed 's/ .*//') -c matroska -q ultra -k hevc -ac opus -f 144 -mf yes -r 120 -cr full -o $HOME/Replays -fm cfr -a "$(pactl get-default-sink).monitor" -a "$(pactl get-default-source)"
