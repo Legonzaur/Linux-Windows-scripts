@@ -3,6 +3,7 @@ Description=Records the display
 
 [Service]
 ExecStart=%h/.local/bin/startRecord
+KillSignal=SIGINT
 
 [Install]
 WantedBy=default.target
